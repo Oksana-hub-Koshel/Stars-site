@@ -1,0 +1,15 @@
+.block_list{
+    background-color: #222222;
+    width: 50%;
+
+}
+.item{
+    border: 1px solid dimgray;
+    padding: 20px;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.item:hover{
+    background-color: #54595d;
+}

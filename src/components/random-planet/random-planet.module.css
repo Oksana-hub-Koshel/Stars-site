@@ -1,7 +1,6 @@
 .container_main{
     display: flex;
     background-color: #222222;
-    gap:30px;
     width: 100%;
 
 }
@@ -9,14 +8,12 @@
     display: flex;
     padding: 20px;
     width: 100%;
-    gap: 70px;
+    gap: 20px;
+    align-items: center;
 }
-.foto{
-    width: 100px;
-    height: 130px;
-}
+
 .img{
-height:160px;
-    width:150px;
+height:130px;
+    width:120px;
     border-radius: 10px;
 }

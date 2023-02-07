@@ -6,7 +6,7 @@ const transformStarships=(starship)=> {
     return {
         id: extractId(starship),
         name: starship.name,
-        model: starship.message,
+        model: starship.model,
         manufacturer: starship.manufacturer,
         costInCredits: starship.costInCredits,
         length: starship.length,
@@ -47,7 +47,8 @@ export const useStarships=()=>{
     }
 }
 
-export const useStarship=()=>{
+export const useStarship=(id)=>{
+
     const [starship, setStarship]=useState([])
     const [loading, setLoading]=useState(false)
     const [error, setError]=useState('')
@@ -55,11 +56,9 @@ export const useStarship=()=>{
     useEffect(() => {
         setError('')
         setLoading(true)
-        API.getStarships()
+        API.getStarships(id)
             .then((data)=>{
-                console.log(data)
-                // const res=data.results.map((elem)=> transformStarships(elem))
-                // setStarship(res)
+                setStarship(data)
                 setLoading(false)
 
             })
@@ -67,7 +66,7 @@ export const useStarship=()=>{
                 setLoading(false)
                 setError(error.message)
             })
-    }, [])
+    }, [id])
 
     return{
         loading,

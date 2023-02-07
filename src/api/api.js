@@ -42,7 +42,7 @@ class API {
     }
 
     getPerson = async (id) => {
-    return await this.getSource(`/person/${id}/`)
+    return await this.getSource(`/people/${id}/`)
 
     }
 

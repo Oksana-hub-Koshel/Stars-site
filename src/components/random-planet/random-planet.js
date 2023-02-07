@@ -5,43 +5,34 @@ import Spinner from "../spinner/spinner";
 import {usePlanet} from "../../hooks/usePlanets";
 
 export const RandomPlanet = () => {
-const {loading, state}=usePlanet(6)
+    const {loading, planet} = usePlanet(6)
 
-    const spinner=loading ? <Spinner/> : null
-    const planet=!loading ? <Planet state={state} /> : null
+    const spinner = loading ? <Spinner/> : null
+    const renderPlanet = !loading ? <Planet planet={planet}/> : null
 
     return (
         <div className={s.container_main}>
             <div className={s.block}>
-                            {spinner}
-                            {planet}
-                        </div>
+                {spinner}
+                {renderPlanet}
+            </div>
         </div>
     );
 };
 
-const Planet=({state})=>{
+const Planet = ({planet}) => {
+    const {name, population, diameter} = planet
 
-    return(
+    return (
         <>
-        <div className={s.foto}>
-            <img src={img} className={s.img} />
-        </div>
-
-
-    <div style={{textAlign:"left"}}>
-        {/*{state.map((elem, id)=>{*/}
-        {/*    return(*/}
-                <div >
-                <h2>{state.name}</h2>
-            <p>Population: {state.population}</p>
-            <p>Ratation Period: {state.rotation_period}</p>
-            <p>Diameter: {state.diameter}</p>
+            <img src={img} className={s.img}/>
+            <div style={{textAlign: "left"}}>
+                <div>
+                    <h2>{name}</h2>
+                    <p>Population: {population}</p>
+                    <p>Diameter: {diameter}</p>
                 </div>
-        {/*    )*/}
-        {/*})}*/}
-
-    </div>
+            </div>
         </>
     )
 }

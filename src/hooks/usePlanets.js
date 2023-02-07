@@ -43,19 +43,25 @@ export const usePlanets=()=>{
 }
 
 export const usePlanet=(id)=>{
-    const [state, setState]=useState([])
+    const [planet, setPlanet]=useState([])
     const [loading, setLoading]=useState(false)
+    const [error, setError]=useState('')
 
     useEffect(() => {
+        setError('')
         setLoading(true)
         API.getPlanet(id)
             .then((data)=>{
-                setState(data)
+                setPlanet(data)
                 setLoading(false)
             })
-    }, [])
+            .catch((error)=>{
+                setLoading(false)
+                setError(error.message)
+            })
+    }, [id])
     return{
-        state,
+        planet,
         loading
     }
 }

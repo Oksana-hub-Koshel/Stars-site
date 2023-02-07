@@ -10,14 +10,13 @@ const StarshipsList = () => {
     return (
         <div className={s.block_list}>
             {loading ? <Spinner/> : null}
-            {!loading ?  starships.map((elem, id)=>{
-                console.log(elem.id)
+            {!loading ?  starships.map((elem)=>{
+
                 return (
-                    <div key={id} className={s.item}>
+                    <div key={elem.id} className={s.item}>
                     <Link
-                        to={`/starships/${id}`}
+                        to={`/starships/${elem.id}`}
                         style={{textDecoration:'none'}}
-                        state={id}
                     >
                         {elem.name}
                     </Link>

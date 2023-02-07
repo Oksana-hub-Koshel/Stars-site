@@ -40,15 +40,15 @@ export const usePeople=()=>{
     }
 }
 
-export const usePerson=()=>{
-    const [person, setPerson]=useState(null)
+export const usePerson=(id)=>{
+    const [person, setPerson]=useState([])
     const [loading, setLoading]=useState(false)
     const [error, setError]=useState('')
 
     useEffect(() => {
         setError('')
         setLoading(true)
-        API.getPerson()
+        API.getPerson(id)
             .then((data)=>{
                 const res= transformPerson(data)
                 setPerson(res)
@@ -59,7 +59,7 @@ export const usePerson=()=>{
                 setLoading(false)
                 setError(error.message)
             })
-    }, [])
+    }, [id])
 
     return{
         loading,

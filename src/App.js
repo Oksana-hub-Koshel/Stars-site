@@ -25,11 +25,11 @@ function App() {
         <Routes>
             <Route path="/" element={ <h1 style={{textAlign: "center"}}>Welcome to StarDB</h1>} exact />
             <Route path="/people" exact element={<People/>} />
-            <Route path="/:id" element={<PersonDetails/>} />
+            <Route path="/people/:id" element={<PersonDetails/>} />
             <Route path="/planets" exact element={<Planets/>} />
             <Route path="/planets/:id" element={<PlanetDetails/>} />
             <Route path="/starships" exact element={<StarshipsList/>} />
-            <Route path="/starships/:id" element={<StarshipDetails/>} />
+            <Route path="/starships/:id" element={<StarshipDetails />}/>
         </Routes>
         </div>
 

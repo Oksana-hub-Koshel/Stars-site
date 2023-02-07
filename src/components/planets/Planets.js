@@ -21,7 +21,6 @@ const Planets = () => {
                        <Link
                            to={`/planets/${elem.id}`}
                            style={{textDecoration:'none'}}
-                           state={id}
                        >
 
                            {elem.name}

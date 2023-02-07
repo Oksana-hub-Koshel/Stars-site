@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
 import s from "./people.module.css";
-import API from "../../api/api";
 import Spinner from "../spinner/spinner";
-import {usePlanets} from "../../hooks/useFetch";
+import {usePeople} from "../../hooks/usePeople";
+import {Link} from "react-router-dom";
 
 const People = () => {
-    const {planets, loading, error}=usePlanets()
+    const {people, loading, error}=usePeople()
 
     if(error){
         return <div>Something wrong...</div>
@@ -15,9 +14,16 @@ const People = () => {
     }
     return (
         <div className={s.block_list}>
-            {planets && planets.map((elem, id)=>{
+            {people && people.map((elem)=>{
                 return (
-                   <div key={id} className={s.item} onClick={()=> API.getPlanet(elem.id)}>{elem.name}</div>
+                    <div key={elem.id} className={s.item}>
+                    <Link
+                        to={`/people/${elem.id}`}
+                        style={{textDecoration:'none'}}
+                    >
+                        {elem.name}
+                    </Link>
+                    </div>
                 )
             }) }
 

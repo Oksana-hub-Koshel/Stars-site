@@ -6,7 +6,7 @@ export const Header = () => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Star DB</a>
+                    <Link className="navbar-brand" to="/">Star DB</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -15,7 +15,7 @@ export const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarColor02">
                         <ul className="navbar-nav me-auto">
                             <li className="nav-item">
-                                <Link className="nav-link active" to="/">People
+                                <Link className="nav-link active" to="/people">People
                                     <span className="visually-hidden">(current)</span>
                                 </Link>
                             </li>

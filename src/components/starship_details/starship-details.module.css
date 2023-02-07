@@ -1,0 +1,13 @@
+.foto{
+    width: 150px;
+    height: 140px;
+}
+.block{
+    display: flex;
+    gap:20px;
+    align-items: flex-start;
+    background-color: #222222;
+    width: 50%;
+    padding: 10px;
+    font-size: 20px;
+}

@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+
 import s from "./planets.module.css";
-import API from "../../api/api";
 import Spinner from "../spinner/spinner";
-import {usePlanets} from "../../hooks/useFetch";
+import {usePlanets} from "../../hooks/usePlanets";
+import {Link} from "react-router-dom";
 
 const Planets = () => {
     const {planets, loading, error}=usePlanets()
@@ -17,7 +17,16 @@ const Planets = () => {
         <div className={s.block_list}>
             {planets && planets.map((elem, id)=>{
                 return (
-                   <div key={id} className={s.item} onClick={()=> API.getPlanet(elem.id)}>{elem.name}</div>
+                   <div key={id} className={s.item}>
+                       <Link
+                           to={`/planets/${elem.id}`}
+                           style={{textDecoration:'none'}}
+                           state={id}
+                       >
+
+                           {elem.name}
+                       </Link>
+                   </div>
                 )
             }) }
 

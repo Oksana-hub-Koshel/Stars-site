@@ -1,17 +1,32 @@
 import {useEffect, useState} from "react";
 import API from "../api/api";
+import {extractId} from "../api/api";
+
+const transformPlanets=(planet)=> {
+    return {
+        id: extractId(planet),
+        name: planet.name,
+        population: planet.population,
+        rotationPeriod: planet.rotationPeriod,
+        diameter: planet.diameter
+    }
+
+}
 
 export const usePlanets=()=>{
     const [planets, setPlanets]=useState([])
     const [loading, setLoading]=useState(false)
     const [error, setError]=useState('')
 
+
+
     useEffect(() => {
         setError('')
         setLoading(true)
         API.getAllPlanets()
             .then((data)=>{
-                setPlanets(data.results)
+                const res=data.results.map((elem)=> transformPlanets(elem))
+                setPlanets(res)
                 setLoading(false)
 
             })
@@ -33,7 +48,7 @@ export const usePlanet=(id)=>{
 
     useEffect(() => {
         setLoading(true)
-        API.getPlanet(3)
+        API.getPlanet(id)
             .then((data)=>{
                 setState(data)
                 setLoading(false)
@@ -45,20 +60,4 @@ export const usePlanet=(id)=>{
     }
 }
 
-export const useAllStarships=() =>{
-    const [starships, setStarships]=useState([])
-    const [loading, setLoading]=useState(false)
 
-    useEffect(() => {
-        setLoading(true)
-        API.getAllStarships()
-            .then((data)=>{
-                setStarships(data.results)
-                setLoading(false)
-
-            })}, [])
-    return{
-        starships,
-        loading
-    }
-}

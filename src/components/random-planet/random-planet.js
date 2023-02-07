@@ -2,9 +2,7 @@ import React, {useState} from 'react';
 import img from "./../../data/120927.jpg"
 import s from "./random-planet.module.css"
 import Spinner from "../spinner/spinner";
-import API from "../../api/api";
-import {useEffect} from "react";
-import {usePlanet} from "../../hooks/useFetch";
+import {usePlanet} from "../../hooks/usePlanets";
 
 export const RandomPlanet = () => {
 const {loading, state}=usePlanet(6)

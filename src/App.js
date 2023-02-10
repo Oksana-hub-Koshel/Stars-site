@@ -11,26 +11,27 @@ import LoginPage from "./components/pages/secret-page/login_page";
 import Secret_page from "./components/pages/secret-page/secret_page";
 import {useState} from "react";
 import Layout from "./components/layout/layout";
+import RequireAuth from "./hoc/RequireAuth";
+import {AuthProvider} from "./hoc/AuthProvider";
 
 
 
 
 function App() {
-    const [isLogged, setIsLogged]=useState(false)
-
-    const login=()=>{
-        setIsLogged(true)
-    }
 
     return (
-   <>
 
+<AuthProvider>
        <Routes>
            <Route path="/" element={<Layout/>}>
             <Route index element={ <h1 style={{textAlign: "center"}}>Welcome to StarDB</h1>}  />
             <Route path="people" element={<People/>} />
-            <Route path="login" element={<LoginPage isLogged={isLogged} logIn={login}/>} />
-            <Route path="secret" element={<Secret_page isLogged={isLogged}/>} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="secret" element={
+                <RequireAuth>
+                    <Secret_page />
+                </RequireAuth>
+               } />
             <Route path="people/:id?" element={<PersonDetails/>} />
             <Route path="planets" exact element={<Planets/>} />
             <Route path="planets/:id" element={<PlanetDetails/>} />
@@ -38,8 +39,9 @@ function App() {
             <Route path="starships/:id" element={<StarshipDetails />}/>
            </Route>
         </Routes>
+</AuthProvider>
 
-   </>
+
   );
 }
 

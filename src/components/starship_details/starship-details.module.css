@@ -1,3 +1,8 @@
+.wrapp{
+    display: flex;
+  flex-direction: column;
+    gap:20px
+}
 .foto{
     width: 150px;
     height: 140px;
@@ -5,9 +10,13 @@
 .block{
     display: flex;
     gap:20px;
-    align-items: flex-start;
+    align-items: center;
     background-color: #222222;
-    width: 50%;
+    width: 100%;
     padding: 10px;
-    font-size: 20px;
+    font-size: 15px;
+}
+.btn{
+    height: 30px;
+    width: 80px;
 }

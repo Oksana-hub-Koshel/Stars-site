@@ -1,18 +1,23 @@
 import React from 'react';
-import {Navigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../../../hooks/useAuth";
 
-const SecretPage = ({isLogged}) => {
-    if (isLogged) {
-        return (
+
+const SecretPage = () => {
+    const navigate=useNavigate()
+    const {signOut}=useAuth()
+    return (
+        <>
             <div className="block_list">
                 <h2>This secret page</h2>
+                <button onClick={()=> signOut(()=> navigate("/", {replace:true}))}>Sign Out</button>
             </div>
 
+        </>
+
         )
-    }
-    return (
-        <Navigate to="/login" />
-    );
+
+
 };
 
 export default SecretPage;

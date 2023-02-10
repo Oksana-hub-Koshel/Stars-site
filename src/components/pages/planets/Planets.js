@@ -1,7 +1,7 @@
 
 import s from "./planets.module.css";
-import Spinner from "../spinner/spinner";
-import {usePlanets} from "../../hooks/usePlanets";
+import Spinner from "../../../components/spinner/spinner";
+import {usePlanets} from "../../../hooks/usePlanets";
 import {Link} from "react-router-dom";
 
 const Planets = () => {

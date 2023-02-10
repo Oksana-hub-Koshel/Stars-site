@@ -1,12 +1,13 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 export const Header = () => {
+    const navigate=useNavigate()
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">Star DB</Link>
+                    <NavLink className="navbar-brand" to="/">Star DB</NavLink>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -15,22 +16,28 @@ export const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarColor02">
                         <ul className="navbar-nav me-auto">
                             <li className="nav-item">
-                                <Link className="nav-link active" to="/people">People
+                                <NavLink className="nav-link" to="/people/">People
                                     <span className="visually-hidden">(current)</span>
-                                </Link>
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/planets">Planets</Link>
+                                <NavLink className="nav-link" to="/planets/">Planets</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/starships">Starships</Link>
+                                <NavLink className="nav-link" to="/starships/">Starships</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/login">Login</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/secret">Secret</NavLink>
                             </li>
 
 
                         </ul>
                         <form className="d-flex">
-                            <input className="form-control me-sm-2" type="search" placeholder="Search" />
-                                <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                            {/*<input className="form-control me-sm-2" type="search" placeholder="Search" />*/}
+                                <button className="btn btn-secondary my-2 my-sm-0" type="submit" onClick={()=> {navigate("/login")}}>Search</button>
                         </form>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
@@ -13,4 +14,40 @@ code {
 }
 a{
   text-decoration: none;
+}
+.block_list{
+  display: flex;
+  flex-direction: column;
+  background-color: #222222;
+  width: 100%;
+  padding: 20px;
+  font-size: 20px;
+  align-items: center;
+}
+.button{
+  padding: 10px;
+  background-color: #9badbf;
+  font-size: 14px;
+  width: 100px;
+}
+.footer{
+/*position: absolute;*/
+/*  bottom: 0;*/
+/*  width: 100%;*/
+/*  !* Высота footer *!*/
+  height: 150px;
+  background-color: #222222;
+/*  margin-top: 30px;*/
+  position: absolute;
+  left: 0;
+  /*bottom: 0;*/
+  width: 100%;
+
+
+
+}
+.foot_text{
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
 }

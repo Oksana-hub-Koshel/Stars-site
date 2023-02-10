@@ -6,10 +6,10 @@ import Spinner from "../spinner/spinner";
 import {useLocation, useParams} from "react-router-dom";
 
 export const StarshipDetails = () => {
-let {id}=useParams()
+    let {id} = useParams()
     const {starship, loading, error} = useStarship(id)
 
-    if(error){
+    if (error) {
         return <div>Something wrong...</div>
     }
     if (loading) {

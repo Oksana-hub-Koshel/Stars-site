@@ -1,14 +1,25 @@
-.block_list{
+.block_left{
+    display: flex;
+    flex-direction: column;
     background-color: #222222;
     width: 50%;
 
 }
+.block_right{
+    display: flex;
+
+    flex-direction: column;
+    background-color: #222222;
+    width: 50%;
+}
+
 .item{
     border: 1px solid dimgray;
     padding: 20px;
     color: white;
     font-weight: bolder;
     cursor: pointer;
+    text-decoration: none;
 }
 .item:hover{
     background-color: #54595d;

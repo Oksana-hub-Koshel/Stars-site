@@ -3,12 +3,13 @@ import img from "./../../data/The_Blue_Marble_(remastered).jpg"
 import s from './person-details.module.css'
 import {usePerson} from "../../hooks/usePeople";
 import Spinner from "../spinner/spinner";
-import {useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
+
 
 export const PersonDetails = () => {
     const {id}=useParams()
-    const {person, loading, error}=usePerson(id)
 
+    const {person, loading, error}=usePerson(id)
 
     if(error){
         return <div>Something wrong...</div>

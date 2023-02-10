@@ -1,6 +1,6 @@
 import s from "../planets/planets.module.css";
-import Spinner from "../spinner/spinner";
-import {useStarships} from "../../hooks/useStarships";
+import Spinner from "../../../components/spinner/spinner";
+import {useStarships} from "../../../hooks/useStarships";
 import {Link} from "react-router-dom";
 
 

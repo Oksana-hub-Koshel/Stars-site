@@ -10,6 +10,7 @@ const StarshipsList = () => {
     return (
         <div className={s.block_list}>
             {loading ? <Spinner/> : null}
+
             {!loading ?  starships.map((elem)=>{
 
                 return (

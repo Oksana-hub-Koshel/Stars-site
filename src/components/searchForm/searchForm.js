@@ -16,7 +16,7 @@ const SearchForm = ({setSearchParams,peopleQuery, latest }) => {
 
     }
     return (
-        <form onSubmit={handleSubmit} style={{marginBottom:20, display:"flex", gap:10}}>
+        <form autoComplete="off" onSubmit={handleSubmit} style={{marginLeft:10,marginTop:10,marginBottom:10, display:"flex", gap:10,}}>
             <input type="search" name="search" value={search} onChange={(e)=>setSearch(e.target.value)} />
             <label style={{padding: '0 1rem', display:"flex", gap:5, alignItems:"center"}}>
                 <input type="checkbox" name="latest" checked={checked} onChange={(e)=>setChecked(e.target.checked)}/>

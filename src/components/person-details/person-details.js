@@ -18,6 +18,7 @@ export const PersonDetails = () => {
         return <Spinner/>
     }
     return (
+
         <div className={s.block}>
       <img src={img} className={s.foto}/>
             <div>
@@ -27,6 +28,7 @@ export const PersonDetails = () => {
             </div>
 
         </div>
+
     );
 };
 

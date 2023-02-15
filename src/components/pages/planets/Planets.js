@@ -14,6 +14,7 @@ const Planets = () => {
         return <Spinner />
     }
     return (
+        <div className="outlet">
         <div className={s.block_list}>
             {planets && planets.map((elem, id)=>{
                 return (
@@ -29,6 +30,7 @@ const Planets = () => {
                 )
             }) }
 
+        </div>
         </div>
     );
 };

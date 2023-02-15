@@ -18,6 +18,7 @@ const LoginPage = () => {
 
 
     return (
+        <div className="outlet">
         <div className="block_list">
             <p>Login to secret page</p>
             <form onSubmit={handleSubmit}>
@@ -26,6 +27,7 @@ const LoginPage = () => {
                 </label>
                 <button type="submit">Login</button>
             </form>
+        </div>
         </div>
     );
 };

@@ -13,6 +13,7 @@ const PlanetDetails = () => {
         return <Spinner/>
     }
     return (
+        <div className="outlet">
         <div className={s.block}>
             <img src={img} className={s.foto}/>
             <div>
@@ -21,6 +22,7 @@ const PlanetDetails = () => {
                 <p>Model: {planet.diameter}</p>
             </div>
 
+        </div>
         </div>
     );
 };

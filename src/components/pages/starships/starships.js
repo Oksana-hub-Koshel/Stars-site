@@ -8,12 +8,14 @@ const StarshipsList = () => {
     const {starships, loading}=useStarships()
 
     return (
+        <div className="outlet">
         <div className={s.block_list}>
             {loading ? <Spinner/> : null}
 
             {!loading ?  starships.map((elem)=>{
 
                 return (
+
                     <div key={elem.id} className={s.item}>
                     <Link
                         to={`/starships/${elem.id}`}
@@ -27,6 +29,8 @@ const StarshipsList = () => {
             }) : null}
 
         </div>
+        </div>
+
     );
 };
 

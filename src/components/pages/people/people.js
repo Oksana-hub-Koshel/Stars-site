@@ -24,7 +24,7 @@ import SearchForm from "../../searchForm/searchForm";
         return <Spinner/>
     }
     return (
-        <>
+        <div className="outlet">
             <div className={s.block_left}>
                <SearchForm setSearchParams={setSearchParams} peopleQuery={peopleQuery} latest={latest}/>
                 {people.filter(person=> person.name.toLowerCase().includes(peopleQuery.toLowerCase()) && person.id>=startsFrom).map(people =>{
@@ -39,7 +39,7 @@ import SearchForm from "../../searchForm/searchForm";
                 <PersonDetails />
             </div>
 
-        </>
+        </div>
     )
 }
 

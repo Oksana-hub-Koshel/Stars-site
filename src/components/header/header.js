@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, useNavigate} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 
 export const Header = () => {
     const navigate=useNavigate()
@@ -33,16 +33,17 @@ export const Header = () => {
                                 <NavLink className="nav-link" to="/secret">Secret</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/store">Store</NavLink>
+                                <NavLink className="nav-link" to="/book_list">Store</NavLink>
                             </li>
 
 
 
                         </ul>
-                        <form className="d-flex">
+                        <div className="d-flex">
                             {/*<input className="form-control me-sm-2" type="search" placeholder="Search" />*/}
-                                <button className="btn btn-secondary my-2 my-sm-0" type="submit" onClick={()=> {navigate("/login")}}>Search</button>
-                        </form>
+                            {/*    <button className="btn btn-secondary my-2 my-sm-0" type="submit" onClick={()=> {navigate("/login")}}>Search</button>*/}
+                            <Link to="cart" className="btn btn-secondary my-2 my-sm-0">My cart</Link>
+                        </div>
                     </div>
                 </div>
             </nav>

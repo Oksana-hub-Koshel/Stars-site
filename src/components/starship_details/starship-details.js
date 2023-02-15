@@ -21,6 +21,7 @@ export const StarshipDetails = () => {
         return <Spinner/>
     }
     return (
+        <div className="outlet">
         <div className={s.wrapp}>
 
         <div className={s.block}>
@@ -33,6 +34,7 @@ export const StarshipDetails = () => {
 
         </div>
         <button onClick={goBack} className={s.btn}>Go back</button>
+        </div>
         </div>
     );
 };

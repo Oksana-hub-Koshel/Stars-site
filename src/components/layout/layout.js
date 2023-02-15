@@ -10,7 +10,7 @@ const Layout = () => {
             <Header/>
             <div className="App">
                 <RandomPlanet/>
-                <div className="outlet">
+                <div>
                     <Outlet/>
                 </div>
 

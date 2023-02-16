@@ -1,7 +1,10 @@
 import React from 'react';
 import s from "./cart-table.module.css";
+import {connect} from "react-redux";
 
-const CartTable = () => {
+const CartTable = ({items, total, onIncrease, onDecrease, onDelete}) => {
+
+
     return (
         <div className={s.wrapp}>
             <h4>Your Order</h4>
@@ -10,51 +13,36 @@ const CartTable = () => {
                 <table className={s.table_1}>
                     <thead className={s.head_table}>
                     <tr>
-                        <td>#</td>
-                        <td>Item</td>
-                        <td>Count</td>
-                        <td>Price</td>
-                        <td>Action</td>
+                        <th>#</th>
+                        <th>Item</th>
+                        <th>Count</th>
+                        <th>Total Amount</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Site Reability</td>
-                        <td>2</td>
-                        <td>$40</td>
-                        <td className={s.command_line}>
-                            <i className="bi bi-dash-circle"></i>
-                            <i className="bi bi-plus-circle"></i>
-                            <i className="bi bi-trash3"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Site Reability</td>
-                        <td>2</td>
-                        <td>$40</td>
-                        <td className={s.command_line}>
-                            <i className="bi bi-dash-circle"></i>
-                            <i className="bi bi-plus-circle"></i>
-                            <i className="bi bi-trash3"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Site Reability</td>
-                        <td>2</td>
-                        <td>$40</td>
-                        <td className={s.command_line}>
-                            <i className="bi bi-dash-circle"></i>
-                            <i className="bi bi-plus-circle"></i>
-                            <i className="bi bi-trash3"></i>
-                        </td>
-                    </tr>
+                    {items.map((item, idx)=>{
+                        const {id, title, count, total}=item
+                        return(
+                            <tr key={id}>
+                                <td>{idx+1}</td>
+                                <td>{title}</td>
+                                <td>{count}</td>
+                                <td>$ {total}</td>
+                                <td className={s.command_line}>
+                                    <i className="bi bi-dash-circle" onClick={()=>onDecrease(id)}></i>
+                                    <i className="bi bi-plus-circle" onClick={()=>onIncrease(id)}></i>
+                                    <i className="bi bi-trash3" onClick={()=>onDelete(id)}></i>
+                                </td>
+                            </tr>
+                        )
+                    })}
+
+
                     </tbody>
                 </table>
                 <div className={s.total}>
-                    <h5>Total: 220$</h5>
+                    <h5>Total: {total} $</h5>
                     <button className="btn-outline-primary" style={{height:40, width:150, backgroundColor:"wheat", color:"black"}}>Checkout</button>
                 </div>
 
@@ -64,5 +52,26 @@ const CartTable = () => {
         </div>
     );
 };
+const mapStateToProps = ({cartItems, orderTotal}) => {
 
-export default CartTable;
+    return {
+        items: cartItems,
+        total: orderTotal
+    }
+}
+
+const mapDispatchToProps=()=>{
+    return {
+        onIncrease: (id)=>{
+            console.log(`Inc ${id}`)
+        },
+        onDecrease: (id)=>{
+            console.log(`Dec ${id}`)
+        },
+        onDelete: (id)=>{
+            console.log(`Del ${id}`)
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CartTable) ;

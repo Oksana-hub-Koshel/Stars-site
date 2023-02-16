@@ -13,8 +13,8 @@ import Layout from "./components/layout/layout";
 import RequireAuth from "./hoc/RequireAuth";
 import {AuthProvider} from "./hoc/AuthProvider";
 import Cart from "./components/pages/cart/cart";
-import BookList from "./components/pages/store/bookList/book_list";
 import BookListItem from "./components/pages/store/book-list-item/book_list_item";
+import BookListContainer from "./components/pages/store/bookList/book_list_container";
 
 function App() {
 
@@ -38,7 +38,7 @@ function App() {
             <Route path="starships" exact element={<StarshipsList/>} />
             <Route path="starships/:id" element={<StarshipDetails />}/>
                <Route path="cart" element={<Cart />}/>
-               <Route path="book_list" element={<BookList />}>
+               <Route path="book_list" element={<BookListContainer />}>
                    <Route path=":id" element={<BookListItem />}/>
                    </Route>
            </Route>

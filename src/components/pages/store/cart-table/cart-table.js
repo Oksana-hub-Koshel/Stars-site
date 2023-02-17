@@ -3,10 +3,8 @@ import s from "./cart-table.module.css";
 import {connect} from "react-redux";
 import {
     bookAddedToCart,
-
-    bookDecreaseCount,
-    bookIncreaseCount,
-    bookRemoveBookFromCart, bookRemoveFromCart, deleteAllBooksFromCart
+    bookRemoveFromCart,
+    deleteAllBooksFromCart
 } from "../../../../redux/actions/actions";
 
 const CartTable = ({items, total, onIncrease, onDecrease, onDelete}) => {
@@ -59,7 +57,7 @@ const CartTable = ({items, total, onIncrease, onDecrease, onDelete}) => {
         </div>
     );
 };
-const mapStateToProps = ({cartItems, orderTotal}) => {
+const mapStateToProps = ({ shoppingCart:{cartItems, orderTotal}}) => {
 
     return {
         items: cartItems,

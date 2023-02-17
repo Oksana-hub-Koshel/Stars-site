@@ -1,12 +1,15 @@
 
 
 const initialState={
-    books: [],
-    loading: true,
-    error: null,
-    cartItems:[],
-    orderTotal:220
-
+    bookList: {
+        books: [],
+        loading: true,
+        error: null,
+    },
+    shoppingCart:{
+        cartItems:[],
+        orderTotal: 0
+    }
 }
 
 const updateCartItems=(cartItems, item, idx)=>{
@@ -54,19 +57,61 @@ const updateCartItem=(book, item={}, quanity)=>{
     }}
 
 const updateOrder=(state, bookId, quanity)=>{
-    const {books, cartItems}=state
-    // const bookId = action.payload
+
+    const {bookList: {books}, shoppingCart:{cartItems}}=state
+
     const book = books.find(({id}) => id === bookId)
     const itemIndex = cartItems.findIndex(({id}) => id === bookId)
     const item = cartItems[itemIndex]
     const newItem = updateCartItem(book, item, quanity)
+
     return {
-        ...state,
+       orderTotal: 0,
         cartItems: updateCartItems(cartItems, newItem, itemIndex)
 
     }
 }
 
+
+const updateBookList = (action, state) => {
+
+    switch (action.type) {
+        case "FETCH_BOOKS_REQUEST":
+            return {
+                books:[],
+                loading: true,
+                error: null
+            }
+        case "FETCH_BOOKS_SUCCESS":
+            return {
+                books: action.payload,
+                loading: false,
+                error: null
+            }
+        case "FETCH_BOOKS_FAILED":
+            return {
+                books: [],
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state.bookList
+    }
+}
+const updateShoppingCart=(action, state)=>{
+    switch (action.type){
+        case "BOOK_ADDED_TO_CART":
+            return updateOrder(state, action.payload, 1)
+        case "REMOVE_ALL_BOOKS_FROM_CART":
+            const item=state.shoppingCart.cartItems.find(({id})=> id===action.payload)
+            return updateOrder(state, action.payload, -item.count)
+        case "BOOK_REMOVE_FROM_CART":
+            return updateOrder(state, action.payload, -1)
+        default:
+            return state.shoppingCart
+    }
+
+}
 
 // для того, чтобы избежать проверок на наличия item, мы можем задать item пустой обьект, чтобы он рне был underfined
     //и значения по умолчанию
@@ -87,49 +132,16 @@ const updateOrder=(state, bookId, quanity)=>{
     //     }
     // }
 
-const reducer=(state=initialState, action)=>{
+const reducer = (state = initialState, action) => {
     console.log(action)
 
-    switch (action.type) {
-        case "FETCH_BOOKS_REQUEST":
-            return {
-                ...state,
-                books:[],
-                loading: true,
-                error: null
-            }
-        case "FETCH_BOOKS_SUCCESS":
-            return {
-                ...state,
-                books: action.payload,
-                loading: false,
-                error: null
-            }
-        case "FETCH_BOOKS_FAILED":
-            return {
-                ...state,
-                books: [],
-                loading: false,
-                error: action.payload
-            }
-
-        case "BOOK_ADDED_TO_CART":
-            return updateOrder(state, action.payload, 1)
-
-
-        case "REMOVE_ALL_BOOKS_FROM_CART":
-            const item=state.cartItems.find(({id})=> id===action.payload)
-            return updateOrder(state, action.payload, -item.count)
-
-
-        case "BOOK_REMOVE_FROM_CART":
-            return updateOrder(state, action.payload, -1)
-
-
-
-
-        default:
-            return state;
+    return{
+        bookList: updateBookList(state, action),
+        shoppingCart: updateShoppingCart(state, action)
     }
+
+
 }
+
+
 export default reducer;

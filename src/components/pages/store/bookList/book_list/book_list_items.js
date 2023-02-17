@@ -1,8 +1,11 @@
 import React from 'react';
 import s from "../bookList.module.css";
 import BookListItem from "../../book-list-item/book_list_item";
+import {useSelector} from "react-redux";
 
-const BookListItems = ({books, onAddedToCart}) => {
+const BookListItems = ({onAddedToCart}) => {
+    const books=useSelector(state=>state.books.books)
+
     return (
         <ul>
             {books.map((book)=>{

@@ -1,24 +1,25 @@
 import BookstoreService from "../../services/bookstore-service";
+import {fetchBooksFailed, fetchBooksRequest, fetchBooksSuccess} from "../bookSlice";
 
-const booksRequest=()=>{
-    return {
-        type: "FETCH_BOOKS_REQUEST"
-    }
-}
-
- const booksLoaded=(newBooks)=>{
-    return {
-        type: "FETCH_BOOKS_SUCCESS",
-        payload: newBooks
-    }
-}
-
- const booksError=(error)=>{
-    return {
-        type: "FETCH_BOOKS_FAILED",
-        payload: error
-    }
-}
+// const booksRequest=()=>{
+//     return {
+//         type: "FETCH_BOOKS_REQUEST"
+//     }
+// }
+//
+//  const booksLoaded=(newBooks)=>{
+//     return {
+//         type: "FETCH_BOOKS_SUCCESS",
+//         payload: newBooks
+//     }
+// }
+//
+//  const booksError=(error)=>{
+//     return {
+//         type: "FETCH_BOOKS_FAILED",
+//         payload: error
+//     }
+// }
 
 export const bookAddedToCart=(bookId)=>{
     return{
@@ -40,14 +41,3 @@ export const deleteAllBooksFromCart=(bookId)=>{
     }
 }
 
-export const fetchBooks=(dispatch)=>()=>{
-    dispatch(booksRequest())
-    BookstoreService.getBooks()
-        .then((data)=>{
-            dispatch(booksLoaded(data))
-        })
-        .catch((error)=>{
-            dispatch(booksError(error))
-        })
-
-}
